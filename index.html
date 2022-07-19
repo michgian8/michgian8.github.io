@@ -1,6 +1,9 @@
 <!DOCTYPE html>
+<html lang="en"> 
+
 <link rel="stylesheet" type="text/css" href="style.css"/>
 
+<!-- 
 <head>
 <title>
   Michelle's Blog for Dogs!
@@ -16,40 +19,54 @@
   <a href="https://www.youtube.com/watch?v=eEFVxI9lqjU&ab_channel=LeagueofLegends">Best Song Ever!</a>  
 </body>
 
-
-
-<iframe width="1" height="315" src="https://www.youtube.com/embed/eEFVxI9lqjU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
-
 <!-- The video -->
-<video autoplay loop id="myVideo">
+<video autoplay muted loop id="myVideo">
   <source src="everythingGoesOn.mp4" type="video/mp4">
 </video>
+
+<!-- <style>       
+  a {
+      cursor: url("/examples/images/custom.gif"), url("/examples/images/custom.cur"), default;
+  }
+</style> -->
 
 <!-- Optional: some overlay text to describe the video -->
 <div class="content">
   <h1>Heading</h1>
-  <p>Lorem ipsum...</p>
+  <p>你觉得这个视频很漂亮吗？我觉得你很漂亮。</p>
   <!-- Use a button to pause/play the video with JavaScript -->
-  <button id="myBtn" onclick="myFunction()">Pause</button>
-</div>
+  <button id="btn" onclick="myFunction()"><span> Toggle Mute</span></button>
+</div> -->
 
+ 
 <script>
   // Get the video
   let video = document.getElementById("myVideo");
-  
+
   // Get the button
-  let btn = document.getElementById("myBtn");
+  let btn = document.getElementById("btn");
   
+  // video.play();
+
+  video.volume = 0.1;
+
+  let i = 0;
+  const colours = ['salmon', 'green', 'blue', 'purple'];
+
+  btn.addEventListener('click', function onClick() {
+    btn.style.backgroundColor = colours[i];
+    btn.style.color = 'white';
+
+    i = i >= colours.length - 1 ? 0 : i + 1;
+
+  });
+
   // Pause and play the video, and change the button text
   function myFunction() {
-    if (video.paused) {
-      video.play();
-      btn.innerHTML = "Pause";
-    } else {
-      video.pause();
-      btn.innerHTML = "Play";
-    }
+    video.muted = !video.muted;
+  
   }
   </script>
+
+
+</html>
